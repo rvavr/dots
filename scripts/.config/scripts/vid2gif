@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+in="$1"
+out="${in%.*}.gif"
+
+ffmpeg -i "$in" \
+  -vf "fps=30,scale=400:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" \
+  -loop 0 "$out"
+

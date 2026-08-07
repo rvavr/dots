@@ -1,0 +1,22 @@
+#!/bin/bash
+
+LOGOUT="   Log Out"
+SLEEP="󰤄   Sleep"
+REBOOT="   Reboot"
+SHUTDOWN="   Shutdown"
+chosen=$(echo -e "$SLEEP\n$REBOOT\n$SHUTDOWN\n$LOGOUT" | rofi -mesg "󰚥 $HOSTNAME" -dmenu -p "Action:" -config ~/.config/rofi/power-manager/power-manager.rasi)
+
+case $chosen in
+    "$SLEEP")
+        systemctl suspend
+        ;;
+    "$LOGOUT")
+        loginctl terminate-session "$XDG_SESSION_ID"
+        ;;
+    "$REBOOT")
+        systemctl reboot
+        ;;
+    "$SHUTDOWN")
+        systemctl poweroff
+        ;;
+esac

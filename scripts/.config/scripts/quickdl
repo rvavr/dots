@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+url=$(rofi -dmenu -p "Download")
+
+[ -z "$url" ] && exit 0
+
+(
+    cd ~/Downloads || exit 1
+
+    file=$(yt-dlp --print after_move:filepath "$url" 2>/dev/null)
+
+    if [ $? -eq 0 ] && [ -n "$file" ]; then
+        notify-send -t 5000 "Video Downloaded" "$(basename "$file")"
+    fi
+) &

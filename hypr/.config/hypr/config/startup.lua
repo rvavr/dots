@@ -1,0 +1,11 @@
+-- See https://wiki.hypr.land/Configuring/Basics/Autostart/
+hl.on("hyprland.start", function()
+		hl.exec_cmd("awww-daemon")
+		hl.exec_cmd("waybar")
+		hl.exec_cmd("fnott")
+		hl.exec_cmd("easyeffects --gapplication-service")
+		hl.exec_cmd("trash-empty 30 -f")
+		hl.exec_cmd("wl-clip-persist --clipboard regular --reconnect-tries 0 >/dev/null 2>&1")
+		hl.exec_cmd("wl-paste --type text --watch cliphist store >/dev/null 2>&1")
+		hl.exec_cmd("wl-paste --type image --watch cliphist store >/dev/null 2>&1")
+end)

@@ -4,6 +4,7 @@ PLAYER="spotify"
 
 shuffle=$(playerctl -p "$PLAYER" shuffle 2>/dev/null)
 volume=$(playerctl -p "$PLAYER" volume 2>/dev/null)
+volume=$(awk -v v="$volume" 'BEGIN {printf "%.0f%%", v * 100}')
 
 choice=$(
     printf '%s\n' \
@@ -13,7 +14,7 @@ choice=$(
         "󰑖 Shuffle [$shuffle]" \
         "󰕾 Volume [$volume]" \
         "󰓓 Kill Spotify" |
-    rofi -dmenu -p "Spotify"
+    rofi -dmenu -theme ~/.config/rofi/media/musicplayer.rasi -p "Spotify"
 )
 
 case "$choice" in
@@ -40,11 +41,15 @@ case "$choice" in
     "󰕾 Volume [$volume]")
         new_volume=$(
             printf "%s" "$volume" |
-            rofi -dmenu -p "Volume (0.0-1.0)"
+            rofi -dmenu -theme ~/.config/rofi/media/input.rasi -p "Volume " -mesg "           Current: $volume"
         )
 
-        if [ -n "$new_volume" ]; then
-            playerctl -p "$PLAYER" volume "$new_volume"
+        if [[ "$new_volume" =~ ^[0-9]+%?$ ]]; then
+            percent="${new_volume%\%}"
+
+            if (( percent >= 0 && percent <= 100 )); then
+                playerctl -p "$PLAYER" volume "$(awk -v v="$percent" 'BEGIN {print v / 100}')"
+            fi
         fi
         ;;
 

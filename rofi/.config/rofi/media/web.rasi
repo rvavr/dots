@@ -1,0 +1,77 @@
+configuration {
+    hover-select: true;
+    me-select-entry: "MousePrimary";
+    me-accept-entry: "!MousePrimary";
+    font: "Geist 12";
+    show-icons: false;
+}
+
+@theme "~/.config/rofi/theme.rasi"
+
+window {
+    width: 25em;
+    height: 6.5em;
+    transparency: "real";
+    fullscreen: false;
+    enabled: true;
+    spacing: 0em;
+    padding: 2em;
+    background-color: transparent;
+}
+
+mainbox {
+    enabled: true;
+    spacing: 0em;
+    orientation: vertical;
+    children: [ "message", "inputbar" ];
+    background-color: @base-200-opa;
+    border-color: @primary-opa;
+    border: 1px;
+    border-radius: 1em;
+}
+
+message {
+    enabled: true;
+    background-color: transparent;
+    text-color: #E5C38F;
+    border: none;
+    children: [ "textbox" ];
+}
+
+textbox {
+    padding: 12px 1em 12px 1em;
+    font: "Octal Light 20";
+    text-color: #E5C38F;
+    background-color: transparent;
+    vertical-align: 0.5;
+    horizontal-align: 0.0;
+}
+
+inputbar {
+    enabled: true;
+    margin: 0.2em 1em 1em 1em;
+    children: [ "prompt", "entry" ];
+    background-color: transparent;
+    border-radius: 0.5em;
+}
+
+prompt {
+    font: "Geist 12";
+    text-color: @secondary;
+    background-color: transparent;
+    padding: 0.8em 0.5em 0em 0.5em;
+}
+
+entry {
+    font: "Geist 11";
+    text-color: #f5e0dcff;
+    background-color: #1E1B21;
+    background-image: linear-gradient(135deg,#2E2A33,#1E1B21);
+    border-radius: 0.5em;
+    border-color: @secondary;
+    border: 1px;
+    placeholder: "Enter download...";
+    placeholder-color: #BF9FD875;
+    padding: 0.4em 0.2em 0.2em 0.4em;
+    enabled: true;
+}

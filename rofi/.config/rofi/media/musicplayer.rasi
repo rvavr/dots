@@ -1,0 +1,113 @@
+configuration {
+    hover-select: true;
+    me-select-entry: "MousePrimary";
+    me-accept-entry: "!MousePrimary";
+    click-to-exit: true;
+}
+
+@theme "~/.config/rofi/theme.rasi"
+
+window {
+    font: "Geist 12";
+    width: 20em;
+    height: 20em;
+    transparency: "real";
+    enabled: true;
+    cursor: "default";
+    spacing: 0em;
+    background-color: transparent;
+    border-radius: 1em;
+}
+
+mainbox {
+    enabled: true;
+    spacing: 0em;
+    orientation: vertical;
+    children: [ "message", "listview" ];
+    background-color: @base-200-opa;
+    border-radius: 1em;
+    border-color: @primary-opa;
+    border: 3px;
+}
+
+message {
+    enabled: true;
+    background-color: @base-200;
+    text-color: @primary;
+    border: none;
+}
+
+textbox {
+    padding: 12px 1em;
+    font: "Octal Light 20";
+    horizontal-align: 0.0;
+    vertical-align: 0.5;
+}
+
+listview {
+    enabled: true;
+    spacing: 0.6em;
+    padding: 1em;
+    columns: 1;
+    lines: 6;
+    cycle: true;
+    dynamic: true;
+    scrollbar: false;
+    layout: vertical;
+    reverse: false;
+    expand: true;
+    fixed-height: true;
+    fixed-columns: true;
+    cursor: "default";
+    background-color: transparent;
+}
+
+element {
+    enabled: true;
+    spacing: 1em;
+    padding: 0.4em 0.5em 0.4em 3.3em;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+element.normal.normal,
+element.alternate.normal {
+    background-color: transparent;
+    text-color: #E5C38F;
+}
+
+element selected.normal {
+    border-radius: 0.5em;
+    background-image: linear-gradient(
+        135deg,
+        #d5aed666,
+        #7866C44d,
+        #7A7FDE66
+    );
+    text-color: @secondary;
+    border-color: @primary-opa;
+    border: 1px;
+}
+
+element-icon {
+    size: 1.5em;
+    cursor: inherit;
+    background-color: transparent;
+    text-color: inherit;
+}
+
+element-text {
+    vertical-align: 0.5;
+    horizontal-align: 0.0;
+    cursor: inherit;
+    background-color: transparent;
+    text-color: inherit;
+    highlight: bold;
+}
+
+error-message {
+    text-color: #cdd6f4ff;
+    background-color: #11111be6;
+    text-transform: capitalize;
+    children: [ "textbox" ];
+}

@@ -1,0 +1,54 @@
+#!/bin/bash
+
+PLAYER="spotify"
+
+shuffle=$(playerctl -p "$PLAYER" shuffle 2>/dev/null)
+volume=$(playerctl -p "$PLAYER" volume 2>/dev/null)
+
+choice=$(
+    printf '%s\n' \
+        "󰐊 Play/Pause" \
+        "󰒭 Previous" \
+        "󰒮 Next" \
+        "󰑖 Shuffle [$shuffle]" \
+        "󰕾 Volume [$volume]" \
+        "󰓓 Kill Spotify" |
+    rofi -dmenu -p "Spotify"
+)
+
+case "$choice" in
+    "󰐊 Play/Pause")
+        playerctl -p "$PLAYER" play-pause
+        ;;
+
+    "󰒭 Previous")
+        playerctl -p "$PLAYER" previous
+        ;;
+
+    "󰒮 Next")
+        playerctl -p "$PLAYER" next
+        ;;
+
+    "󰑖 Shuffle [$shuffle]")
+        playerctl -p "$PLAYER" shuffle Toggle
+
+        new_shuffle=$(playerctl -p "$PLAYER" shuffle 2>/dev/null)
+
+        notify-send "Spotify" "Shuffle: $new_shuffle"
+        ;;
+
+    "󰕾 Volume [$volume]")
+        new_volume=$(
+            printf "%s" "$volume" |
+            rofi -dmenu -p "Volume (0.0-1.0)"
+        )
+
+        if [ -n "$new_volume" ]; then
+            playerctl -p "$PLAYER" volume "$new_volume"
+        fi
+        ;;
+
+    "󰓓 Kill Spotify")
+        pkill -x spotify
+        ;;
+esac

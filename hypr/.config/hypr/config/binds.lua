@@ -24,7 +24,7 @@ hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd(bar))
 -- misc
 hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd("pkill rofi || wallselect"))
 hl.bind(mainMod .. " + Period", hl.dsp.exec_cmd("kitty -T floating-kitty wiremix"))
-hl.bind(mainMod .. " + G", hl.dsp.exec_cmd("moonlight-stable & steam"))
+hl.bind(mainMod .. " + G", hl.dsp.exec_cmd("discord & steam"))
 
 -- scripts
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("snip"))
@@ -33,6 +33,7 @@ hl.bind(mainMod .. " + SHIFT + M", hl.dsp.exec_cmd("pkill rofi || quickdl"))
 hl.bind(mainMod .. " + A", hl.dsp.exec_cmd("define"))
 hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("pkill rofi || cliphist-rofi"))
 hl.bind("CTRL + ALT + P", hl.dsp.exec_cmd("pkill rofi || powermenu"))
+hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("pkill rofi || musicctl"))
 
 -- windowing
 hl.bind("ALT + TAB", hl.dsp.focus({ workspace = "previous" }))
@@ -48,10 +49,9 @@ hl.bind(mainMod .. " + down",  hl.dsp.focus({ direction = "down" }))
 
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
-for i = 1, 10 do
-    local key = i % 10 -- 10 maps to key 0
-    hl.bind(mainMod .. " + " .. key,             hl.dsp.focus({ workspace = i}))
-    hl.bind(mainMod .. " + SHIFT + " .. key,     hl.dsp.window.move({ workspace = i }))
+for i = 1, 9 do
+    hl.bind(mainMod .. " + " .. i,             hl.dsp.focus({ workspace = i}))
+    hl.bind(mainMod .. " + SHIFT + " .. i,     hl.dsp.window.move({ workspace = i }))
 end
 
 -- Scroll through existing workspaces with mainMod + scroll

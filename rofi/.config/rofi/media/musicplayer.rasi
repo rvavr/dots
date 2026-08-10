@@ -9,8 +9,8 @@ configuration {
 
 window {
     font: "Geist 12";
-    width: 20em;
-    height: 20em;
+    width: 25em;
+    height: 21em;
     transparency: "real";
     enabled: true;
     cursor: "default";
@@ -38,16 +38,16 @@ message {
 }
 
 textbox {
-    padding: 12px 1em;
-    font: "Octal Light 20";
+    padding: 6px 1em 6px 0px;
+    font: "Geist Light 14";
     horizontal-align: 0.0;
-    vertical-align: 0.5;
+    vertical-align: 0.0;
 }
 
 listview {
     enabled: true;
-    spacing: 0.6em;
-    padding: 1em;
+    spacing: 0.3em;
+    padding: 0em;
     columns: 1;
     lines: 6;
     cycle: true;
@@ -64,8 +64,8 @@ listview {
 
 element {
     enabled: true;
-    spacing: 1em;
-    padding: 0.4em 0.5em 0.4em 3.3em;
+    spacing: 5.3em;
+    padding: 0.6em 2.7em;
     cursor: pointer;
     background-color: transparent;
 }
@@ -73,29 +73,23 @@ element {
 element.normal.normal,
 element.alternate.normal {
     background-color: transparent;
-    text-color: #E5C38F;
+    text-color: @neutral;
 }
 
 element selected.normal {
     border-radius: 0.5em;
-    background-image: linear-gradient(
-        135deg,
-        #d5aed666,
-        #7866C44d,
-        #7A7FDE66
-    );
+    // background-color: @primary-opa;
+    background-image: linear-gradient(135deg,#d5aed666,#7866C44d,#7A7FDE66);
     text-color: @secondary;
     border-color: @primary-opa;
     border: 1px;
 }
-
 element-icon {
     size: 1.5em;
     cursor: inherit;
     background-color: transparent;
     text-color: inherit;
 }
-
 element-text {
     vertical-align: 0.5;
     horizontal-align: 0.0;
@@ -105,9 +99,17 @@ element-text {
     highlight: bold;
 }
 
+// Error message //
 error-message {
     text-color: #cdd6f4ff;
     background-color: #11111be6;
     text-transform: capitalize;
     children: [ "textbox" ];
+}
+
+textbox {
+    text-color: inherit;
+    background-color: inherit;
+    vertical-align: 0.5;
+    horizontal-align: 0.5;
 }

@@ -5,6 +5,7 @@ PLAYER="spotify"
 shuffle=$(playerctl -p "$PLAYER" shuffle 2>/dev/null)
 volume=$(playerctl -p "$PLAYER" volume 2>/dev/null)
 volume=$(awk -v v="$volume" 'BEGIN {printf "%.0f%%", v * 100}')
+title=$(playerctl -p "$PLAYER" metadata --format '{{title}} - {{artist}}' 2>/dev/null)
 
 choice=$(
     printf '%s\n' \
@@ -14,7 +15,7 @@ choice=$(
         "󰑖 Shuffle [$shuffle]" \
         "󰕾 Volume [$volume]" \
         "󰓓 Kill Spotify" |
-    rofi -dmenu -theme ~/.config/rofi/media/musicplayer.rasi -p "Spotify"
+    rofi -mesg "$title" -dmenu -theme ~/.config/rofi/media/musicplayer.rasi -p "Spotify"
 )
 
 case "$choice" in

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+SOURCE="@DEFAULT_AUDIO_SOURCE@"
+
+wpctl set-mute "$SOURCE" toggle
+
+if wpctl get-volume @DEFAULT_AUDIO_SOURCE@ | grep -q MUTED; then
+    pw-play --volume 0.75 ~/.local/share/sounds/mute.mp3
+else
+    pw-play --volume 0.7 ~/.local/share/sounds/unmute.mp3
+fi

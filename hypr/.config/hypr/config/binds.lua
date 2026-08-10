@@ -34,6 +34,7 @@ hl.bind(mainMod .. " + A", hl.dsp.exec_cmd("define"))
 hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("pkill rofi || cliphist-rofi"))
 hl.bind("CTRL + ALT + P", hl.dsp.exec_cmd("pkill rofi || powermenu"))
 hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("pkill rofi || musicctl"))
+hl.bind("code:66", hl.dsp.exec_cmd("togglemic"))
 
 -- windowing
 hl.bind("ALT + TAB", hl.dsp.focus({ workspace = "previous" }))

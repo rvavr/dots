@@ -1,12 +1,12 @@
 # install
 ```
-gh repo clone rvavr/dotfiles
+gh repo clone rvavr/dots
 ```
 
 or
 
 ```
-git clone https://github.com/rvavr/dotfiles
+git clone https://github.com/rvavr/dots
 ```
 
 

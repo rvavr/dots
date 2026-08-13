@@ -5,9 +5,10 @@ hl.config({
         gaps_out = 15,
         border_size = 2,
         col = {
-            active_border   = "rgba(bb9af7ee)",
+            active_border   = "rgba(719df7ee)",
             inactive_border = "rgba(595959aa)",
         },
+
         resize_on_border = false,
         allow_tearing = false,
         layout = "dwindle",
@@ -51,7 +52,8 @@ hl.config({
     },
 
     misc = {
-        force_default_wallpaper = 1, 
+        middle_click_paste = false,
+		force_default_wallpaper = 1, 
         disable_hyprland_logo   = true, 
 		on_focus_under_fullscreen = 2, -- 0 ignores, 1 takes over, 2 unfullscreens/unmaximizes
 		vrr = 2, -- 0 off, 1 on, 2 fullscreen only, 3 fullscreen with video/game content

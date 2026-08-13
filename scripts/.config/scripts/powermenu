@@ -11,7 +11,7 @@ case $chosen in
         systemctl suspend
         ;;
     "$LOGOUT")
-        loginctl terminate-session "$XDG_SESSION_ID"
+        wayland-logout
         ;;
     "$REBOOT")
         systemctl reboot

@@ -4,6 +4,7 @@ c="clear" \
 v="nvim" \
 nano="nvim" \
 f="fff" \
+fetch="fastfetch" \
 cat="bat" \
 l="ls -lh --color=auto --group-directories-first" \
 ls="ls -h --color=auto --group-directories-first" \

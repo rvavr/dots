@@ -140,11 +140,8 @@ hl.window_rule({
     workspace = "9 silent",
 })
 
-hl.window_rule({
-    name = "recording",
-    match = {
-		class = "gsr-ui",
-	},
-	float = true,
+hl.layer_rule({
+    name = "tools",
+    match = { namespace = "selection|gsr-ui" },
+	no_anim = true,
 })
-

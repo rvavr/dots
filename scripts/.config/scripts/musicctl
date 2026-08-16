@@ -2,32 +2,42 @@
 
 PLAYER="spotify"
 
-shuffle=$(playerctl -p "$PLAYER" shuffle 2>/dev/null)
-volume=$(playerctl -p "$PLAYER" volume 2>/dev/null)
-volume=$(awk -v v="$volume" 'BEGIN {printf "%.0f%%", v * 100}')
-title=$(playerctl -p "$PLAYER" metadata --format '{{title}} - {{artist}}' 2>/dev/null)
+if playerctl -p "$PLAYER" status >/dev/null 2>&1; then
+    spotify_running=true
 
-choice=$(
-    printf '%s\n' \
-        "󰐊 Play/Pause" \
-        "󰒭 Previous" \
-        "󰒮 Next" \
-        "󰑖 Shuffle [$shuffle]" \
-        "󰕾 Volume [$volume]" \
-        "󰓓 Kill Spotify" |
-    rofi -mesg "$title" -dmenu -theme ~/.config/rofi/media/musicplayer.rasi -p "Spotify"
-)
+    shuffle=$(playerctl -p "$PLAYER" shuffle 2>/dev/null)
+    volume=$(playerctl -p "$PLAYER" volume 2>/dev/null)
+    volume=$(awk -v v="$volume" 'BEGIN {printf "%.0f%%", v * 100}')
+    title=$(playerctl -p "$PLAYER" metadata --format '{{title}} - {{artist}}' 2>/dev/null)
+
+    choice=$(
+        printf '%s\n' \
+            "󰐊 Play/Pause" \
+            "󰒮 Previous" \
+            "󰒭 Next" \
+            "󰑖 Shuffle [$shuffle]" \
+            "󰕾 Volume [$volume]" \
+            "󰓓 Kill Spotify" |
+        rofi -mesg "$title" -dmenu -theme ~/.config/rofi/media/musicplayer.rasi -p "Spotify"
+    )
+else
+    choice=$(
+        printf '%s\n' \
+            "󰓓 Launch Spotify" |
+        rofi -dmenu -theme ~/.config/rofi/media/musicplayer.rasi -p "Spotify"
+    )
+fi
 
 case "$choice" in
     "󰐊 Play/Pause")
         playerctl -p "$PLAYER" play-pause
         ;;
 
-    "󰒭 Previous")
+    "󰒮 Previous")
         playerctl -p "$PLAYER" previous
         ;;
 
-    "󰒮 Next")
+    "󰒭 Next")
         playerctl -p "$PLAYER" next
         ;;
 
@@ -52,6 +62,10 @@ case "$choice" in
                 playerctl -p "$PLAYER" volume "$(awk -v v="$percent" 'BEGIN {print v / 100}')"
             fi
         fi
+        ;;
+
+    "󰓓 Launch Spotify")
+        spotify-launcher
         ;;
 
     "󰓓 Kill Spotify")

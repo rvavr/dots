@@ -60,6 +60,14 @@ hl.window_rule({
 })
 
 hl.window_rule({
+    name = "Mpv",
+    match = {
+		class = "mpv",
+    },
+	float = true,
+})
+
+hl.window_rule({
     match = {
         class = "^steam$",
         title = "^notificationtoasts_%d+_desktop$",
@@ -70,10 +78,11 @@ hl.window_rule({
 hl.window_rule({
     name = "browser",
     match = {
-        class = "zen|helium",
+        class = "zen|helium|librewolf",
     },
 
     workspace = 1,
+    no_screen_share = true,
 })
 
 hl.window_rule({
@@ -83,6 +92,7 @@ hl.window_rule({
     },
 
     workspace = "2 silent",
+    no_screen_share = true,
 })
 
 hl.window_rule({
@@ -142,6 +152,8 @@ hl.window_rule({
 
 hl.layer_rule({
     name = "tools",
-    match = { namespace = "selection|gsr-ui" },
+    match = { namespace = "selection|gsr-ui|rofi" },
 	no_anim = true,
+	blur = false,
+	no_screen_share = true,
 })

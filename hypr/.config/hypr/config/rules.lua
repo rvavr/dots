@@ -82,7 +82,7 @@ hl.window_rule({
     },
 
     workspace = 1,
-    no_screen_share = true,
+--    no_screen_share = true,
 })
 
 hl.window_rule({
@@ -92,7 +92,23 @@ hl.window_rule({
     },
 
     workspace = "2 silent",
-    no_screen_share = true,
+--    no_screen_share = true,
+})
+
+hl.window_rule({
+    name = "discord overlay",
+	match = {
+		class = "orbolay",
+	},
+
+	float = true,
+	fullscreen = true,
+	pin = true,
+	no_focus = true,
+	no_anim = true,
+	no_blur = true,
+	no_shadow = true,
+    border_size = 0,
 })
 
 hl.window_rule({
@@ -157,3 +173,21 @@ hl.layer_rule({
 	blur = false,
 	no_screen_share = true,
 })
+
+-- Noctalia Settings
+hl.window_rule({
+    match = { class = "dev.noctalia.Noctalia" },
+    float = true,
+    size = { 1080, 920 },
+})
+
+
+hl.workspace_rule({ workspace = "1", persistent = true, default_name = "browsers" })
+hl.workspace_rule({ workspace = "2", persistent = true, default_name = "chat" })
+hl.workspace_rule({ workspace = "3", persistent = true, default_name = "games" })
+hl.workspace_rule({ workspace = "4", persistent = true, default_name = "launchers" })
+hl.workspace_rule({ workspace = "5", persistent = true, default_name = "wallpaper" })
+hl.workspace_rule({ workspace = "6", persistent = true, default_name = "sandbox" })
+hl.workspace_rule({ workspace = "7", persistent = true, default_name = "audiowork" })
+hl.workspace_rule({ workspace = "8", persistent = true, default_name = "misc" })
+hl.workspace_rule({ workspace = "9", persistent = true, default_name = "music" })

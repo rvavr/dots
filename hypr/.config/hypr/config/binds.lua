@@ -8,6 +8,7 @@ local pass        = "pkill rofi || passmenu"
 local menu        = "pkill rofi || rofi -show drun"
 local browser     = "zen-browser"
 local bar         = "pkill waybar || waybar"
+local ipc 		  = "noctalia msg "
 
 -- Main Modifier & keybinds
 local mainMod = "SUPER"
@@ -19,20 +20,37 @@ hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + D", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + P", hl.dsp.exec_cmd(pass))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser))
-hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd(bar))
+
+-- waybar kill/relaunch 
+-- waybar used to freeze on sleep for me, but it stopped doing that recently, command exists also in case you dont want/need the bar in certain scenarios
+-- hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd(bar))
+
+-- replaceables
+-- this lets you choose if you want to use noctalia or not, will keep all replaced stuff here
+-- hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd("pkill rofi || wallselect"))
+hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd(ipc .. "panel-toggle wallpaper"))
+-- hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("snip"))
+hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd(ipc .. "screenshot-region"))
+-- hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("pkill rofi || cliphist-rofi"))
+hl.bind(mainMod .. " + V", hl.dsp.exec_cmd(ipc .. "panel-toggle clipboard"))
+-- hl.bind("CTRL + ALT + P", hl.dsp.exec_cmd("pkill rofi || powermenu"))
+hl.bind("CTRL + ALT + P", hl.dsp.exec_cmd(ipc .. "panel-toggle session"))
+
+
+-- new / noctalia
+-- undecided if its all new things or just noctalia related
+hl.bind(mainMod .. " + I", hl.dsp.exec_cmd(ipc .. "settings-toggle"))
+hl.bind(mainMod .. " + BackSpace", hl.dsp.exec_cmd(ipc .. "notification-clear-history"))
+hl.bind(mainMod .. " + SHIFT + Backspace", hl.dsp.exec_cmd(ipc .. "clipboard-clear"))
 
 -- misc
-hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd("pkill rofi || wallselect"))
 hl.bind(mainMod .. " + Period", hl.dsp.exec_cmd("kitty -T floating-kitty wiremix"))
 hl.bind(mainMod .. " + G", hl.dsp.exec_cmd("discord & steam"))
 
 -- scripts
-hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("snip"))
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("pkill rofi || quickmpv"))
 hl.bind(mainMod .. " + SHIFT + M", hl.dsp.exec_cmd("pkill rofi || quickdl"))
 hl.bind(mainMod .. " + A", hl.dsp.exec_cmd("define"))
-hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("pkill rofi || cliphist-rofi"))
-hl.bind("CTRL + ALT + P", hl.dsp.exec_cmd("pkill rofi || powermenu"))
 hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("pkill rofi || musicctl"))
 hl.bind("code:66", hl.dsp.exec_cmd("togglemic")) -- this is caps lock set to toggle mic, edit the script to add sounds
 

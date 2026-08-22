@@ -1,0 +1,63 @@
+@import url(https://clearvision.github.io/ClearVision-v7/main.css);
+@import url(https://fonts.bunny.net/css?family=geist:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i);
+
+/* Font Control, use google fonts or fonts.bunny.net to get whatever font you want imported and fill out your changes below */
+:root{
+		--background-image: url(https://i.postimg.cc/sVsMz72T/tokyo1.png);
+		--font-primary: "Geist";
+		--font-display: "Geist";
+		--font-headline: "Geist";
+		--font-code: 'Geist', sans-serif;
+		--nvfontsize: 16.5px
+}
+
+html,
+[class*=heading-md],
+[class*=text],
+[class*=input_],
+[class^=topic_],
+[class^=name_],
+[class*=item_],
+[class*=description_],
+[class*=tooltip_]
+ { font-size: var(--nvfontsize) !important; }
+
+/* Removes mild annoyances */
+[aria-label="Open sticker picker"],
+[aria-label="Add Friends to DM"],
+[aria-label="Show User Profile"],
+[aria-label="Start Voice Call"],
+[aria-label="Start Video Call"],
+[aria-label="Hide Member List"],
+[aria-label="Open GIF picker"],
+[aria-label="Send a gift"],
+[aria-label="Threads"],
+[aria-label="Inbox"],
+[aria-label="Help"],
+[href^="catbox"],
+[href^="tenor"],
+[href="/store"],
+[href="/shop"] {
+	display: none !important;
+}
+
+/* Automatically resizing gif picker */
+:root {
+	--expression-picker-aspect-ratio: 2 / 1;
+}
+
+[class*="expressionPickerPositionLayer_"] [class*="positionContainer_"] {
+	height: calc(100vh - 128px);
+}
+
+[class*="expressionPickerPositionLayer_"] [class*="drawerSizingWrapper_"] {
+	max-height: 100%;
+	bottom: 0px;
+	height: auto;
+	aspect-ratio: var(--expression-picker-aspect-ratio);
+}
+
+/* Hide any blocked / ignored messages */
+[class*="groupStart"]:has([class*="blockedSystemMessage"]) {
+    display: none !important;
+}

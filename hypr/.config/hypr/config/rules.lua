@@ -137,7 +137,7 @@ hl.window_rule({
 hl.window_rule({
     name = "others / proton wayland",
     match = {
-        class = "t-engine|net-runelite-client-RuneLite|VampireSurvivors.exe|orionclient-win64-shipping.exe|discovery-d.exe",
+        class = "palworld-win64-shipping.exe|discovery.exe|discovery-d.exe|t-engine|net-runelite-client-RuneLite|VampireSurvivors.exe|orionclient-win64-shipping.exe",
     },
 
     workspace = 3,
@@ -168,7 +168,7 @@ hl.window_rule({
 
 hl.layer_rule({
     name = "tools",
-    match = { namespace = "selection|gsr-ui|rofi" },
+    match = { namespace = "selection|gsr-ui|rofi|noctalia-screenshot-region" },
 	no_anim = true,
 	blur = false,
 	no_screen_share = true,
@@ -182,12 +182,12 @@ hl.window_rule({
 })
 
 
-hl.workspace_rule({ workspace = "1", persistent = true, default_name = "browsers" })
-hl.workspace_rule({ workspace = "2", persistent = true, default_name = "chat" })
-hl.workspace_rule({ workspace = "3", persistent = true, default_name = "games" })
-hl.workspace_rule({ workspace = "4", persistent = true, default_name = "launchers" })
-hl.workspace_rule({ workspace = "5", persistent = true, default_name = "wallpaper" })
-hl.workspace_rule({ workspace = "6", persistent = true, default_name = "sandbox" })
-hl.workspace_rule({ workspace = "7", persistent = true, default_name = "audiowork" })
-hl.workspace_rule({ workspace = "8", persistent = true, default_name = "misc" })
-hl.workspace_rule({ workspace = "9", persistent = true, default_name = "music" })
+--hl.workspace_rule({ workspace = "1", persistent = true, default_name = "browsers" })
+--hl.workspace_rule({ workspace = "2", persistent = true, default_name = "chat" })
+--hl.workspace_rule({ workspace = "3", persistent = true, default_name = "games" })
+--hl.workspace_rule({ workspace = "4", persistent = true, default_name = "launchers" })
+--hl.workspace_rule({ workspace = "5", persistent = true, default_name = "wallpaper" })
+--hl.workspace_rule({ workspace = "6", persistent = true, default_name = "sandbox" })
+--hl.workspace_rule({ workspace = "7", persistent = true, default_name = "audiowork" })
+--hl.workspace_rule({ workspace = "8", persistent = true, default_name = "misc" })
+--hl.workspace_rule({ workspace = "9", persistent = true, default_name = "music" })

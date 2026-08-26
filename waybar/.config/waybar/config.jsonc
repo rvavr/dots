@@ -5,7 +5,8 @@
   "height": 36,
   "modules-left": ["ext/workspaces"],
   "modules-center": ["clock"],
-  "modules-right": ["wireplumber", "cpu", "memory", "custom/power"],
+  // "modules-right": ["wireplumber", "cpu", "memory", "custom/power"],
+  "modules-right": ["custom/power"],
 
   "custom/power": {
     "format-icons": ["<span color='#e2d0a3'>  </span>"],

@@ -23,25 +23,23 @@ hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser))
 
 -- waybar kill/relaunch 
 -- waybar used to freeze on sleep for me, but it stopped doing that recently, command exists also in case you dont want/need the bar in certain scenarios
--- hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd(bar))
+hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd(bar))
 
 -- replaceables
 -- this lets you choose if you want to use noctalia or not, will keep all replaced stuff here
--- hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd("pkill rofi || wallselect"))
-hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd(ipc .. "panel-toggle wallpaper"))
--- hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("snip"))
-hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd(ipc .. "screenshot-region"))
--- hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("pkill rofi || cliphist-rofi"))
-hl.bind(mainMod .. " + V", hl.dsp.exec_cmd(ipc .. "panel-toggle clipboard"))
--- hl.bind("CTRL + ALT + P", hl.dsp.exec_cmd("pkill rofi || powermenu"))
-hl.bind("CTRL + ALT + P", hl.dsp.exec_cmd(ipc .. "panel-toggle session"))
-
-
--- new / noctalia
--- undecided if its all new things or just noctalia related
-hl.bind(mainMod .. " + I", hl.dsp.exec_cmd(ipc .. "settings-toggle"))
-hl.bind(mainMod .. " + BackSpace", hl.dsp.exec_cmd(ipc .. "notification-clear-history"))
-hl.bind(mainMod .. " + SHIFT + Backspace", hl.dsp.exec_cmd(ipc .. "clipboard-clear"))
+ hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd("pkill rofi || wallselect"))
+-- hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd(ipc .. "panel-toggle wallpaper"))
+hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("snip"))
+-- hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd(ipc .. "screenshot-region"))
+hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("pkill rofi || cliphist-rofi"))
+-- hl.bind(mainMod .. " + V", hl.dsp.exec_cmd(ipc .. "panel-toggle clipboard"))
+hl.bind("CTRL + ALT + P", hl.dsp.exec_cmd("pkill rofi || powermenu"))
+-- hl.bind("CTRL + ALT + P", hl.dsp.exec_cmd(ipc .. "panel-toggle session"))
+hl.bind(mainMod .. " + I", hl.dsp.exec_cmd("pkill kitty || kitty -T floating-kitty nvim ~/.config/hypr/"))
+-- hl.bind(mainMod .. " + I", hl.dsp.exec_cmd(ipc .. "settings-toggle"))
+hl.bind(mainMod .. " + Backspace", hl.dsp.exec_cmd("fnottctl pause"))
+hl.bind(mainMod .. " + SHIFT + Backspace", hl.dsp.exec_cmd("fnottctl unpause"))
+-- hl.bind(mainMod .. " + BackSpace", hl.dsp.exec_cmd(ipc .. "notification-clear-history"))
 
 -- misc
 hl.bind(mainMod .. " + Period", hl.dsp.exec_cmd("kitty -T floating-kitty wiremix"))

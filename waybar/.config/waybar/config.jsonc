@@ -6,7 +6,7 @@
   "modules-left": ["ext/workspaces"],
   "modules-center": ["clock"],
   // "modules-right": ["wireplumber", "cpu", "memory", "custom/power"],
-  "modules-right": ["custom/power"],
+  "modules-right": ["tray", "custom/power"],
 
   "custom/power": {
     "format-icons": ["<span color='#e2d0a3'>  </span>"],
@@ -83,5 +83,9 @@
     "format-charging": "{capacity}% ",
     "format-alt": "{time} {icon}",
     "format-icons": ["<span color='#8aade0'></span>", "<span color='#8aade0'></span>", "<span color='#8aade0'></span>", "<span color='#8aade0'></span>", "<span color='#8aade0'></span>"]
-  }
+  },
+    "tray": {
+        "icon-size": 16,
+        "spacing": 8
+    }
 }

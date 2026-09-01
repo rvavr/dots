@@ -33,7 +33,7 @@ hl.config({
         },
     },
     animations = {
-        enabled = true,
+        enabled = false,
     },
 
 -- See https://wiki.hypr.land/Configuring/Layouts/Dwindle-Layout/ for more

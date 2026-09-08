@@ -3,10 +3,10 @@
 -- Default programs
 local terminal    = "kitty"
 local floatTerm   = "kitty -T floating-kitty"
-local fileManager = "thunar"
-local pass        = "pkill rofi || passmenu"
-local menu        = "pkill rofi || rofi -show drun"
-local browser     = "zen-browser"
+local fileManager = "dolphin"
+local pass        = "noctalia msg panel-toggle launcher '/pass '"
+local menu        = "noctalia msg panel-toggle launcher"
+local browser     = "xdg-open http://"
 local bar         = "pkill waybar || waybar"
 local ipc 		  = "noctalia msg "
 
@@ -23,37 +23,39 @@ hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser))
 
 -- waybar kill/relaunch 
 -- waybar used to freeze on sleep for me, but it stopped doing that recently, command exists also in case you dont want/need the bar in certain scenarios
-hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd(bar))
+-- hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd(bar))
 
 -- replaceables
 -- this lets you choose if you want to use noctalia or not, will keep all replaced stuff here
- hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd("pkill rofi || wallselect"))
--- hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd(ipc .. "panel-toggle wallpaper"))
-hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("snip"))
--- hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd(ipc .. "screenshot-region"))
-hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("pkill rofi || cliphist-rofi"))
--- hl.bind(mainMod .. " + V", hl.dsp.exec_cmd(ipc .. "panel-toggle clipboard"))
-hl.bind("CTRL + ALT + P", hl.dsp.exec_cmd("pkill rofi || powermenu"))
--- hl.bind("CTRL + ALT + P", hl.dsp.exec_cmd(ipc .. "panel-toggle session"))
-hl.bind(mainMod .. " + I", hl.dsp.exec_cmd("pkill kitty || kitty -T floating-kitty nvim ~/.config/hypr/"))
--- hl.bind(mainMod .. " + I", hl.dsp.exec_cmd(ipc .. "settings-toggle"))
-hl.bind(mainMod .. " + Backspace", hl.dsp.exec_cmd("fnottctl pause"))
-hl.bind(mainMod .. " + SHIFT + Backspace", hl.dsp.exec_cmd("fnottctl unpause"))
--- hl.bind(mainMod .. " + BackSpace", hl.dsp.exec_cmd(ipc .. "notification-clear-history"))
+-- hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd("pkill rofi || wallselect"))
+hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd(ipc .. "panel-toggle wallpaper"))
+-- hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("snip"))
+hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd(ipc .. "screenshot-region"))
+-- hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("pkill rofi || cliphist-rofi"))
+hl.bind(mainMod .. " + V", hl.dsp.exec_cmd(ipc .. "panel-toggle clipboard"))
+-- hl.bind("CTRL + ALT + P", hl.dsp.exec_cmd("pkill rofi || powermenu"))
+hl.bind("CTRL + ALT + P", hl.dsp.exec_cmd(ipc .. "panel-toggle session"))
+-- hl.bind(mainMod .. " + I", hl.dsp.exec_cmd("pkill kitty || kitty -T floating-kitty nvim ~/.config/hypr/"))
+hl.bind(mainMod .. " + I", hl.dsp.exec_cmd(ipc .. "settings-toggle"))
+-- hl.bind(mainMod .. " + Backspace", hl.dsp.exec_cmd("fnottctl pause"))
+-- hl.bind(mainMod .. " + SHIFT + Backspace", hl.dsp.exec_cmd("fnottctl unpause"))
+hl.bind(mainMod .. " + BackSpace", hl.dsp.exec_cmd(ipc .. "notification-clear-history"))
+-- hl.bind("code:66", hl.dsp.exec_cmd("togglemic")) -- this is caps lock set to toggle mic, edit the script to add sounds
+hl.bind("code:66", hl.dsp.exec_cmd(ipc .. "mic-mute"))
 
 -- misc
-hl.bind(mainMod .. " + Period", hl.dsp.exec_cmd("kitty -T floating-kitty wiremix"))
-hl.bind(mainMod .. " + G", hl.dsp.exec_cmd("discord & steam"))
+-- hl.bind(mainMod .. " + Period", hl.dsp.exec_cmd("kitty -T floating-kitty wiremix"))
+-- hl.bind(mainMod .. " + G", hl.dsp.exec_cmd("discord & steam"))
 
 -- scripts
-hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("pkill rofi || quickmpv"))
-hl.bind(mainMod .. " + SHIFT + M", hl.dsp.exec_cmd("pkill rofi || quickdl"))
-hl.bind(mainMod .. " + A", hl.dsp.exec_cmd("define"))
-hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("pkill rofi || musicctl"))
-hl.bind("code:66", hl.dsp.exec_cmd("togglemic")) -- this is caps lock set to toggle mic, edit the script to add sounds
+-- hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("pkill rofi || quickmpv"))
+-- hl.bind(mainMod .. " + SHIFT + M", hl.dsp.exec_cmd("pkill rofi || quickdl"))
+-- hl.bind(mainMod .. " + A", hl.dsp.exec_cmd("define"))
+-- hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("pkill rofi || musicctl"))
 
 -- windowing
-hl.bind("ALT + TAB", hl.dsp.focus({ workspace = "previous" }))
+hl.bind(mainMod .. " + TAB", hl.dsp.focus({ workspace = "previous" })) -- quickly switch to last workspace
+hl.bind("ALT + TAB", hl.dsp.exec_cmd(ipc .. "window-switcher")) -- window walking regardless of workspace
 local closeWindowBind = hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "fullscreen" , action = "toggle" }))
 hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen({ mode = "maximized" , action = "toggle" }))
@@ -66,7 +68,7 @@ hl.bind(mainMod .. " + down",  hl.dsp.focus({ direction = "down" }))
 
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
-for i = 1, 9 do
+for i = 1, 5 do
     hl.bind(mainMod .. " + " .. i,             hl.dsp.focus({ workspace = i}))
     hl.bind(mainMod .. " + SHIFT + " .. i,     hl.dsp.window.move({ workspace = i }))
 end

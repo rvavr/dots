@@ -35,7 +35,7 @@ hl.window_rule({
 hl.window_rule({
 	name = "floating explorer",
 	match = {
-		class = "thunar",
+		class = "dolphin",
 	},
 		size = {1550, 1000},
 		float = true,
@@ -78,7 +78,7 @@ hl.window_rule({
 hl.window_rule({
     name = "browser",
     match = {
-        class = "zen|helium|librewolf",
+        class = "zen|app.zen_browser.zen|helium|librewolf",
     },
 
     workspace = 1,
@@ -96,28 +96,12 @@ hl.window_rule({
 })
 
 hl.window_rule({
-    name = "discord overlay",
-	match = {
-		class = "orbolay",
-	},
-
-	float = true,
-	fullscreen = true,
-	pin = true,
-	no_focus = true,
-	no_anim = true,
-	no_blur = true,
-	no_shadow = true,
-    border_size = 0,
-})
-
-hl.window_rule({
     name = "launchers",
     match = {
         class = "steam|com.adamcake.Bolt",
     },
 
-    workspace = "4 silent",
+    workspace = "5 silent",
 })
 
 hl.window_rule({
@@ -154,7 +138,7 @@ hl.window_rule({
 		class = "(S|s)potify|com.rafaelmardojai.Blanket",
 	},
 
-	workspace = "9 silent",
+	workspace = "4 silent",
 })
 
 hl.window_rule({
@@ -163,7 +147,7 @@ hl.window_rule({
 		title = "termusic",
     },
 
-    workspace = "9 silent",
+    workspace = "4 silent",
 })
 
 hl.layer_rule({
@@ -185,9 +169,5 @@ hl.window_rule({
 --hl.workspace_rule({ workspace = "1", persistent = true, default_name = "browsers" })
 --hl.workspace_rule({ workspace = "2", persistent = true, default_name = "chat" })
 --hl.workspace_rule({ workspace = "3", persistent = true, default_name = "games" })
---hl.workspace_rule({ workspace = "4", persistent = true, default_name = "launchers" })
---hl.workspace_rule({ workspace = "5", persistent = true, default_name = "wallpaper" })
---hl.workspace_rule({ workspace = "6", persistent = true, default_name = "sandbox" })
---hl.workspace_rule({ workspace = "7", persistent = true, default_name = "audiowork" })
---hl.workspace_rule({ workspace = "8", persistent = true, default_name = "misc" })
---hl.workspace_rule({ workspace = "9", persistent = true, default_name = "music" })
+--hl.workspace_rule({ workspace = "4", persistent = true, default_name = "music" })
+--hl.workspace_rule({ workspace = "5", persistent = true, default_name = "launchers" })

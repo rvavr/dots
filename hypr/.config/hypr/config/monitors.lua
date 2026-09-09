@@ -4,10 +4,10 @@
 local default_monitor = "DP-2"
 
 hl.monitor({
-    output   = default_monitor,
-    mode     = "2560x1440@180",
-    position = "0x0",
-    scale    = "1",
+	output   = default_monitor,
+	mode     = "2560x1440@180",
+	position = "0x0",
+	scale    = "1",
 	bitdepth = 10,
 	vrr 	 = 1,
 })

@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+
+shopt -s nullglob globstar
+
+if [[ -z $WAYLAND_DISPLAY && -z $DISPLAY ]]; then
+	echo "Error: No display detected" >&2
+	exit 1
+fi
+
+dmenu="rofi -dmenu"
+
+prefix=${PASSWORD_STORE_DIR:-$HOME/.password-store}
+password_files=( "$prefix"/**/*.gpg )
+password_files=( "${password_files[@]#"$prefix"/}" )
+password_files=( "${password_files[@]%.gpg}" )
+
+entry=$(printf '%s\n' "${password_files[@]}" | $dmenu -p "Passwords")
+[[ -n $entry ]] || exit
+
+has_otp=0
+pass otp "$entry" >/dev/null 2>&1 && has_otp=1
+
+if [[ $has_otp -eq 1 ]]; then
+	action=$(printf "Password\nOTP\n" | $dmenu -p "Action")
+	[[ -n $action ]] || exit
+else
+	action="Password"
+fi
+
+case "$action" in
+	Password)
+		pass show -c "$entry"
+		sleep 10
+		cliphist list | head -n 2 | cliphist delete
+	;;
+	OTP)
+		pass otp -c "$entry"
+		sleep 10
+		cliphist list | head -n 2 | cliphist delete
+	;;
+esac

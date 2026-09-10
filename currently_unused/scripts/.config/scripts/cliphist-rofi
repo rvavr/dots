@@ -1,0 +1,12 @@
+#!/bin/bash
+
+choice=$( (cliphist list; echo "CLEAR_HISTORY") | rofi -dmenu -p "clipboard")
+
+[[ -z "$choice" ]] && exit
+
+if [[ "$choice" == "CLEAR_HISTORY" ]]; then
+	cliphist wipe
+	exit
+fi
+
+echo "$choice" | cliphist decode | wl-copy

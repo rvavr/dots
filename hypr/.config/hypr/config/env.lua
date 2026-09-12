@@ -2,12 +2,6 @@
 
 local HOME = os.getenv("HOME")
 
--- alternative cursor settings (github cursors you have to tinker with for XCursors by addin/editingg a single file)
--- hl.env("XCURSOR_SIZE", "32")
--- hl.env("HYPRCURSOR_SIZE", "32")
--- hl.env("XCURSOR_THEME", "Lilith_XCursor")
--- hl.env("HYPRCURSOR_THEME", "Lilith_cursor")
-
 hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_SIZE", "24")
 hl.env("XCURSOR_THEME", "Bibata-Modern-Ice")

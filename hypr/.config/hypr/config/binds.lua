@@ -25,6 +25,7 @@ hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd(ipc .. "screenshot-region")) 
 hl.bind(mainMod .. " + V", hl.dsp.exec_cmd(ipc .. "panel-toggle clipboard")) -- same hotkey from windows for clipboard management
 hl.bind(mainMod .. " + I", hl.dsp.exec_cmd(ipc .. "settings-toggle")) -- same hotkey from windows but for Noctalia panel settings, can set to something like kitty -T floating-kitty -e nvim ~/.config/hypr/config/ if you want to configure hypr instead
 hl.bind(mainMod .. " + BackSpace", hl.dsp.exec_cmd(ipc .. "notification-clear-history")) -- personal bind to clear notifications
+hl.bind(mainMod .. " + SHIFT + BackSpace", hl.dsp.exec_cmd(ipc .. "clipboard-clear")) -- personal bind to clear clipboard
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "fullscreen" , action = "toggle" })) -- switch these two for something more normal
 hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen({ mode = "maximized" , action = "toggle" })) -- switch these two for something more normal
 hl.bind(mainMod .. " + TAB", hl.dsp.exec_cmd(ipc .. "window-switcher")) -- windows like "alt tab" but on super
@@ -33,7 +34,9 @@ local closeWindowBind = hl.bind(mainMod .. " + Q", hl.dsp.window.close()) -- clo
 
 hl.bind("CTRL + ALT + P", hl.dsp.exec_cmd(ipc .. "panel-toggle session")) -- power menu
 
-hl.bind("code:66", hl.dsp.exec_cmd(ipc .. "mic-mute")) -- caps lock key (which is unbound due to hating that key) to mic mute, giving it a better purpose
+--hl.bind("code:66", hl.dsp.exec_cmd(ipc .. "mic-mute")) -- caps lock key (which is unbound due to hating that key) to mic mute, giving it a better purpose
+
+hl.bind(mainMod .. " + M", hl.dsp.exec_cmd(ipc .. "panel-toggle raycursive/discord-voice:panel"))
 
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))

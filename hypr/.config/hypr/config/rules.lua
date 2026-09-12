@@ -95,7 +95,7 @@ hl.window_rule({
 hl.window_rule({
 	name = "games",
 	match = {
-	class = "^steam_app_.*$",
+	class = "^steam_app_.*$|VampireSurvivors.exe",
 	},
 	workspace = 3,
 	render_unfocused = true,
@@ -140,8 +140,8 @@ hl.window_rule({
 
 -- to have persistent workspaces remove --'s below
 
---hl.workspace_rule({ workspace = "1", persistent = true, default_name = "browsers" })
---hl.workspace_rule({ workspace = "2", persistent = true, default_name = "chat" })
---hl.workspace_rule({ workspace = "3", persistent = true, default_name = "games" })
---hl.workspace_rule({ workspace = "4", persistent = true, default_name = "launchers" })
---hl.workspace_rule({ workspace = "5", persistent = true, default_name = "music" })
+hl.workspace_rule({ workspace = "1", persistent = true, default_name = "browsers" })
+hl.workspace_rule({ workspace = "2", persistent = true, default_name = "chat" })
+hl.workspace_rule({ workspace = "3", persistent = true, default_name = "games" })
+hl.workspace_rule({ workspace = "4", persistent = true, default_name = "launchers" })
+hl.workspace_rule({ workspace = "5", persistent = true, default_name = "music" })

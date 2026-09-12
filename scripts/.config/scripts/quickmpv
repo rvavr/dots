@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-set -euo pipefail
-url="$(rofi -dmenu -theme ~/.config/rofi/media/web.rasi -p "Playback")"
-[ -z "$url" ] && exit 0
-exec mpv "$url"

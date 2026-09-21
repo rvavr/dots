@@ -29,10 +29,11 @@ hl.window_rule({
 hl.window_rule({
 	name = "floating explorer",
 	match = {
-	class = "dolphin|thunar",
+	class = "org.kde.dolphin|dolphin|thunar",
 	},
 	size = {1550, 1000},
 	float = true,
+	opacity = 0.85,
 })
 
 hl.window_rule({
@@ -69,7 +70,14 @@ hl.window_rule({
 	float = true,
 })
 
-
+hl.window_rule({
+    match = {
+	class = "Discover-overlay"
+	},
+	float = true,
+	pin = true,
+	no_focus = true,
+})
 
 
 
@@ -78,7 +86,7 @@ hl.window_rule({
 hl.window_rule({
 	name = "browser",
 	match = {
-	class = "zen|app.zen_browser.zen|helium|librewolf",
+	class = "brave-origin|zen|app.zen_browser.zen|helium|librewolf",
 	},
 	workspace = 1,
 	no_screen_share = true,
@@ -95,7 +103,7 @@ hl.window_rule({
 hl.window_rule({
 	name = "games",
 	match = {
-	class = "^steam_app_.*$|VampireSurvivors.exe",
+	class = "^steam_app_.*$|VampireSurvivors.exe|WizardOfLegend.x86_64",
 	},
 	workspace = 3,
 	render_unfocused = true,

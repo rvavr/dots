@@ -3,7 +3,7 @@
 -- Default programs
 local terminal    = "kitty"
 local floatTerm   = "kitty -T floating-kitty"
-local fileManager = "dolphin"
+local fileManager = "kitty -T floating-kitty -e nnn -eH"
 local pass        = "noctalia msg panel-toggle launcher '/pass '"
 local menu        = "noctalia msg panel-toggle launcher"
 local browser     = "xdg-open http://"
@@ -18,6 +18,7 @@ hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(floatTerm)) -- floating terminal
 hl.bind(mainMod .. " + SHIFT+ Return", hl.dsp.exec_cmd(terminal)) -- tiling terminal with shift
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager)) -- file manager edit rules to make float if you use a different one
 hl.bind(mainMod .. " + D", hl.dsp.exec_cmd(menu))  -- typical launcher
+--hl.bind("SUPER_L", hl.dsp.exec_cmd(menu), {long_press = true,})  -- typical launcher
 hl.bind(mainMod .. " + P", hl.dsp.exec_cmd(pass)) -- I use password-store as pw-manager, it's amazing
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser)) -- always opens default browser via using xdg-open, go to rules to configure
 hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd(ipc .. "panel-toggle wallpaper")) -- typical wallpaper switcher
@@ -31,12 +32,14 @@ hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen({ mode = "maximized"
 hl.bind(mainMod .. " + TAB", hl.dsp.exec_cmd(ipc .. "window-switcher")) -- windows like "alt tab" but on super
 hl.bind("ALT + TAB", hl.dsp.focus({ workspace = "previous" })) -- quickly switch to last workspace, my preferred way of going to last workspace, pressing again returns you
 local closeWindowBind = hl.bind(mainMod .. " + Q", hl.dsp.window.close()) -- closes window, can change this bind if you desire, probably will add a hard kill version later with SHIFT Q
+local killWindowBind = hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.exec_cmd("hyprctl kill"))
 
 hl.bind("CTRL + ALT + P", hl.dsp.exec_cmd(ipc .. "panel-toggle session")) -- power menu
 
---hl.bind("code:66", hl.dsp.exec_cmd(ipc .. "mic-mute")) -- caps lock key (which is unbound due to hating that key) to mic mute, giving it a better purpose
-
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd(ipc .. "panel-toggle raycursive/discord-voice:panel"))
+hl.bind(mainMod .. " + SHIFT + M", hl.dsp.exec_cmd("/home/arcy/.local/bin/discover-overlay"))
+
+hl.bind(mainMod .. " + G", hl.dsp.exec_cmd("gamemode")) -- gamemode toggle script
 
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
@@ -67,9 +70,9 @@ hl.bind("XF86AudioPlay",  hl.dsp.exec_cmd("playerctl play-pause"), { locked = tr
 hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = true })
 
 -- Using dial on keyboard to control these keys instead, default binds are below it
-hl.bind("XF86AudioRaiseVolume",  hl.dsp.exec_cmd("playerctl next"),       { locked = true, repeating = true })
-hl.bind("XF86AudioLowerVolume",  hl.dsp.exec_cmd("playerctl previous"),   { locked = true, repeating = true })
-hl.bind("XF86AudioMute",         hl.dsp.exec_cmd("playerctl play-pause"),     { locked = true, repeating = true })
+hl.bind("XF86AudioRaiseVolume",  hl.dsp.exec_cmd("playerctl -p spotify next"),       { locked = true, repeating = true })
+hl.bind("XF86AudioLowerVolume",  hl.dsp.exec_cmd("playerctl -p spotify previous"),   { locked = true, repeating = true })
+hl.bind("XF86AudioMute",         hl.dsp.exec_cmd("playerctl -p spotify play-pause"),     { locked = true, repeating = true })
 
 -- hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"), { locked = true, repeating = true })
 -- hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"),      { locked = true, repeating = true })

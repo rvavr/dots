@@ -20,20 +20,20 @@ hl.config({
 	active_opacity   = 1.0,
 	inactive_opacity = 1.0,
 	shadow = {
-            enabled      = false,
+            enabled      = true,
             range        = 4,
             render_power = 3,
             color        = 0xee1a1a1a,
         },
 	blur = {
-            enabled   = false,
+            enabled   = true,
             size      = 3,
             passes    = 2,
             vibrancy  = 0.1696,
         },
     },
     animations = {
-	enabled = false,
+	enabled = true,
     },
 
 -- See https://wiki.hypr.land/Configuring/Layouts/Dwindle-Layout/ for more
